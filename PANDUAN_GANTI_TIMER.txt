@@ -1,0 +1,49 @@
+============================================================
+PANDUAN MENGUBAH WAKTU UPDATE RTP (DARI 30 DETIK KE 1 JAM)
+============================================================
+
+RUMUS DASAR:
+1 Jam = 60 Menit x 60 Detik = 3600 Detik.
+
+Jika ingin mengubah interval waktu, angka kuncinya adalah: 3600.
+
+------------------------------------------------------------
+LANGKAH 1: EDIT FILE SCRIPT.JS
+------------------------------------------------------------
+
+1. Cari Function: generateRtpData()
+   - Cari baris kode: const timeBlock = Math.floor(seconds / 30);
+   - UBAH MENJADI:    const timeBlock = Math.floor(seconds / 3600);
+
+2. Cari Function: updateTimerDisplay(currentSeconds)
+   - Cari baris kode: const duration = 30;
+   - UBAH MENJADI:    const duration = 3600;
+
+------------------------------------------------------------
+LANGKAH 2: EDIT FILE INDEX.HTML
+------------------------------------------------------------
+
+1. Cari teks di bagian bawah (Footer/Algo Info):
+   "Update otomatis setiap 30 detik..."
+
+2. Ganti teks tersebut menjadi:
+   "Update otomatis setiap 1 jam..."
+
+------------------------------------------------------------
+DAFTAR KONVERSI WAKTU (CHEAT SHEET)
+------------------------------------------------------------
+Gunakan angka detik ini untuk variabel 'timeBlock' dan 'duration':
+
+- 30 Detik  = 30
+- 1 Menit   = 60
+- 5 Menit   = 300
+- 10 Menit  = 600
+- 30 Menit  = 1800
+- 1 Jam     = 3600
+- 2 Jam     = 7200
+
+============================================================
+CATATAN TAMBAHAN:
+- Pastikan angka pembagi di 'timeBlock' dan angka 'duration' SELALU SAMA.
+- Jangan lupa refresh browser (Clear Cache) setelah update script.
+============================================================

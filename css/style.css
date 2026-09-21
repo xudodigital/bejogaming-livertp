@@ -1,0 +1,894 @@
+/* CSS Variables for color theme management */
+:root {
+    /* Updated Primary Color (Deep Maroon) */
+    --primary-black: #310c0b;
+    
+    --soft-gray: #f5f7f9;
+    --green: #00c853;
+    --yellow: #ffab00;
+    --red: #d50000;
+    
+    /* Indicator Background Colors */
+    --bg-green: #e8f5e9;
+    --border-green: #c8e6c9;
+    --bg-yellow: #fff8e1;
+    --border-yellow: #ffe082;
+    --bg-red: #ffebee;
+    --border-red: #ffcdd2;
+    
+    /* Dark Mode Palette Variables */
+    --theme-primary: #310c0b;   /* Background */
+    --theme-secondary: #671a17; /* Cards/Sections */
+    --theme-accent: #f9e378;    /* Gold Text/Icons */
+}
+
+/* Base document styles */
+body {
+    margin: 0;
+    background-color: #f0f2f5;
+    font-family: 'Saira', sans-serif; 
+    color: var(--primary-black);
+    line-height: 1.4;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Main container layout */
+.rtp-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    /* Bottom padding to accommodate fixed marquee */
+    padding-bottom: 60px; 
+}
+
+/* Sticky header and top navigation area */
+.content-area {
+    padding: 14px 0 6px 0;
+    text-align: center;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 50; 
+    border-bottom: 1px solid var(--soft-gray);
+}
+
+.header-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+/* Dark mode button styles */
+body.dark-mode .icon-btn {
+    background: var(--theme-secondary);
+    color: var(--theme-accent); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.seo-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-black);
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timer-badge {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 8px;
+    border: 1px solid #bbdefb;
+    font-family: monospace;
+}
+
+/* Sort and Filter button styling */
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 6px;
+    margin-top: 4px;
+}
+
+.filter-btn {
+    background: none; 
+    border: none;     
+    padding: 5px 0;   
+    box-shadow: none; 
+    font-family: 'Saira', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #999;      
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent; 
+}
+
+.filter-btn:hover { color: var(--primary-black); }
+
+.filter-btn.active {
+    background: none;
+    color: var(--primary-black);
+    font-weight: 800;
+    border-bottom: 2px solid var(--primary-black); 
+    border-radius: 0;
+}
+
+/* Scrollable provider tabs with gradient fade effect */
+.tabs-wrapper {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.tabs-wrapper::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 40px;
+    background: linear-gradient(to right, #ffffff 20%, transparent); z-index: 5; pointer-events: none;
+}
+
+.tabs-wrapper::after {
+    content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 40px;
+    background: linear-gradient(to left, #ffffff 20%, transparent); z-index: 5; pointer-events: none;
+}
+
+.provider-tabs-container {
+    width: 100%; overflow-x: auto; white-space: nowrap; padding: 0 20px;
+    box-sizing: border-box; scrollbar-width: none;
+}
+.provider-tabs-container::-webkit-scrollbar { display: none; }
+
+/* Update class .tab-btn yang sudah ada menjadi seperti ini */
+.tab-btn {
+    display: inline-flex;       /* Menggunakan Flexbox agar sejajar */
+    align-items: center;        /* Posisi vertikal tengah */
+    gap: 6px;                   /* Jarak antara Icon dan Teks */
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    padding: 6px 14px;          /* Sedikit penyesuaian padding */
+    border-radius: 20px;
+    font-family: 'Saira', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #888;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+/* Tambahkan class baru ini untuk mengatur ukuran icon */
+.tab-icon {
+    width: 28px;       /* Ukuran kecil pas untuk tombol */
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Pastikan warna teks putih saat aktif di Dark Mode / Active State */
+.tab-btn.active {
+    background: var(--primary-black);
+    color: #fff;
+    border-color: var(--primary-black);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Search input field styling */
+.search-container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto 15px auto; 
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    border-radius: 25px;
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+    font-family: 'Saira', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-black);
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+    background: #fff;
+    border-color: var(--primary-black);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+    display: flex;
+    align-items: center;
+}
+
+/* Game grid layout and card design */
+.rtp-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 6px 15px;
+}
+
+.game-card-link { text-decoration: none; color: inherit; display: block; }
+
+.game-card {
+    background: #fff; border-radius: 10px; padding: 6px; text-align: center;
+    border: 1px solid var(--soft-gray); box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: transform 0.2s; position: relative;
+}
+.game-card:active { transform: scale(0.98); }
+
+.game-img {
+    width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;
+    display: block; margin-bottom: 6px;
+}
+
+.game-name {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary-black); font-size: 9px; font-weight: 700; height: 28px;
+    line-height: 1.1; overflow: hidden; margin-bottom: 6px;
+}
+
+.progress-bar {
+    background: #f0f0f0; height: 14px; border-radius: 4px; overflow: hidden;
+    position: relative; margin-bottom: 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background-color 1s ease;
+}
+
+.rtp-percent-text {
+    font-size: 11px;
+    font-weight: 800;
+    display: block;
+    transition: color 0.5s ease;
+}
+
+/* Favorite icon styling */
+.fav-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2rem;
+    z-index: 10;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+    transition: transform 0.2s;
+}
+.fav-icon:hover { transform: scale(1.2); }
+.fav-icon.is-active { color: var(--red); }
+.fav-icon.is-inactive { color: #fff; opacity: 0.7; }
+
+/* High RTP pulsing badge styling */
+.gacor-badge {
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--green);
+    color: #ffffff;
+    font-size: 9px; font-weight: 800;
+    padding: 3px 10px; border-radius: 20px;
+    z-index: 20; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    white-space: nowrap; pointer-events: auto; cursor: pointer;
+    animation: pulse-gacor-center 1.5s infinite ease-in-out;
+    transition: transform 0.2s;
+}
+.gacor-badge:hover { transform: translateX(-50%) scale(1.1); }
+
+@keyframes pulse-gacor-center {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+/* SEO text section styling */
+.seo-article-wrapper {
+    background: #ffffff;
+    margin: 15px; margin-bottom: 10px; padding: 15px; 
+    border-radius: 12px; border: 1px solid var(--soft-gray);
+}
+.seo-heading {
+    font-size: 16px; line-height: 1.3; font-weight: 800;
+    color: var(--primary-black); margin-top: 0; margin-bottom: 10px;
+    text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+}
+.seo-heading::before {
+    content: ""; display: block; width: 4px; height: 16px;
+    background: var(--green); border-radius: 2px;
+}
+.seo-text {
+    font-size: 12px; color: #555; margin-bottom: 12px;
+    text-align: justify; line-height: 1.5;
+}
+.seo-list {
+    font-size: 12px; color: #555; margin-bottom: 12px; padding-left: 20px;
+}
+.seo-list li { margin-bottom: 6px; }
+
+/* Disclaimer and Responsible Gambling section */
+.footer-info-area {
+    padding: 0 15px 20px 15px;
+}
+
+.disclaimer-box {
+    background-color: #fff8e1; border: 1px solid #ffe082;
+    border-radius: 8px; padding: 12px; margin-top: 15px;
+    display: flex; gap: 10px; align-items: flex-start;
+}
+.disclaimer-icon { font-size: 1.2rem; line-height: 1; }
+.disclaimer-content h4 {
+    margin: 0 0 4px 0; font-size: 11px; font-weight: 800;
+    color: #f57f17; text-transform: uppercase;
+}
+.disclaimer-content p {
+    margin: 0; font-size: 10px; color: #795548;
+    line-height: 1.3; text-align: left;
+}
+
+.responsible-gambling {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+.rg-badge {
+    background: var(--primary-black);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.rg-text {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.3;
+    text-align: left;
+}
+
+/* Scrolling text footer animation */
+.marquee-footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: var(--primary-black);
+    color: #fff;
+    height: 45px;
+    line-height: 45px;
+    font-size: 13px;
+    border-top: none;    
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 100;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+}
+
+.marquee-track {
+    display: inline-block;
+    padding-left: 100%; 
+    animation: marquee-scroll 25s linear infinite;
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Floating winner notification toast */
+.live-winner-toast {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 400px; background: rgba(0, 0, 0, 0.85);
+    color: #fff; padding: 10px 15px; border-radius: 8px;
+    font-size: 0.8rem; display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 90;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+}
+.live-winner-toast.show { opacity: 1; animation: slideUpFade 0.5s ease-out; }
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translate(-50%, 20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* =======================================================
+   DARK MODE OVERRIDES (Maroon/Gold Theme)
+   ======================================================= */
+body.dark-mode { 
+    background-color: var(--theme-primary); 
+    color: #fff; 
+}
+
+body.dark-mode .rtp-wrapper, 
+body.dark-mode .content-area {
+    background-color: var(--theme-primary); 
+    border-color: var(--theme-secondary); 
+    color: #fff;
+}
+
+/* Dark Mode Cards */
+body.dark-mode .game-card {
+    background-color: var(--theme-secondary);
+    border-color: #4a1513;
+    color: #fff;
+}
+
+body.dark-mode .seo-article-wrapper,
+body.dark-mode .modal-content {
+    background-color: var(--theme-primary); 
+    border-color: var(--theme-accent); 
+    color: #fff;
+}
+
+/* Dark Mode Filters & Tabs */
+body.dark-mode .filter-btn { color: rgba(255,255,255,0.6); }
+body.dark-mode .filter-btn:hover { color: var(--theme-accent); }
+body.dark-mode .filter-btn.active { 
+    color: var(--theme-accent); 
+    border-bottom-color: var(--theme-accent); 
+    background: none; 
+}
+
+/* Text Colors in Dark Mode */
+body.dark-mode .seo-title, 
+body.dark-mode .modal-title, 
+body.dark-mode .seo-heading { 
+    color: var(--theme-accent); 
+}
+
+body.dark-mode .search-container input { 
+    background-color: var(--theme-secondary); 
+    border-color: var(--theme-secondary); 
+    color: #fff; 
+}
+body.dark-mode .search-container input:focus {
+    border-color: var(--theme-accent);
+}
+
+body.dark-mode .game-name { color: #fff; }
+
+/* Gradients for Tabs */
+body.dark-mode .tabs-wrapper::before { background: linear-gradient(to right, var(--theme-primary) 20%, transparent); }
+body.dark-mode .tabs-wrapper::after { background: linear-gradient(to left, var(--theme-primary) 20%, transparent); }
+
+/* Disclaimer & Footer Info in Dark Mode */
+body.dark-mode .disclaimer-box { 
+    background-color: rgba(249, 227, 120, 0.1); 
+    border-color: var(--theme-accent); 
+}
+body.dark-mode .disclaimer-content p, 
+body.dark-mode .rg-text { color: rgba(255,255,255,0.7); }
+
+body.dark-mode .responsible-gambling { 
+    background: var(--theme-secondary); 
+    border-color: #4a1513; 
+}
+body.dark-mode .rg-badge { 
+    background: var(--theme-accent); 
+    color: var(--theme-primary); 
+}
+
+/* Popup modal for Gacor Patterns */
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); z-index: 999;
+    align-items: center; justify-content: center; backdrop-filter: blur(4px);
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+    background: #fff; width: 85%; max-width: 300px; padding: 25px 20px;
+    border-radius: 16px; text-align: center; position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-title { font-size: 1.1rem; font-weight: 800; color: var(--primary-black); margin-bottom: 5px; }
+.modal-game-name { font-size: 0.8rem; color: #666; margin-bottom: 15px; font-weight: 600; }
+.pattern-box {
+    background: #f5f7f9; padding: 12px; border-radius: 10px;
+    border: 1px dashed #ccc; margin-bottom: 15px; text-align: left;
+}
+body.dark-mode .pattern-box { background: var(--theme-secondary); border-color: #4a1513; }
+.pattern-item {
+    font-size: 0.8rem; margin-bottom: 6px; display: flex;
+    align-items: center; gap: 8px; line-height: 1.3;
+}
+.pattern-icon { color: var(--green); font-weight: bold; }
+.modal-cta-btn {
+    display: block; width: 100%; box-sizing: border-box; padding: 12px 0; margin-top: 10px;
+    background: var(--primary-black); color: #fff; text-decoration: none; font-weight: 700;
+    border-radius: 50px; font-size: 0.85rem; text-transform: uppercase; text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s;
+}
+body.dark-mode .modal-cta-btn { 
+    background: var(--theme-accent); 
+    color: var(--theme-primary); 
+}
+.modal-cta-btn:active { transform: scale(0.98); }
+.close-modal-btn {
+    position: absolute; top: -15px; right: -10px; width: 32px; height: 32px;
+    background-color: rgba(0, 0, 0, 0.6); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+.close-modal-btn:active { transform: scale(0.9); }
+.close-modal-btn svg { display: block; }
+
+/* Adjustments for mobile devices smaller than 380px */
+@media screen and (max-width: 380px) {
+    /* Switch to 3 columns on small screens */
+    .rtp-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    
+    /* Reduce font size to fit screen */
+    .filter-btn {
+        font-size: 0.75rem; 
+        gap: 4px;
+    }
+    
+    /* Adjust header gap */
+    .filter-controls {
+        gap: 15px;
+    }
+}
+
+/* --- TEMPORARY DISABLE FEATURES --- */
+
+/* Hide Search Bar */
+.search-container {
+    display: none !important;
+}
+
+/* Hide Slot Name in game card */
+.game-name {
+    display: none !important;
+}
+
+/* Adjust card padding since text is hidden */
+.game-card {
+    padding-bottom: 10px;
+}
+
+/* =========================================
+   FLOATING CONTACT BUTTON STYLES
+   ========================================= */
+.floating-chat-btn {
+    position: fixed;
+    bottom: 150px; /* Posisi di atas marquee footer */
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    background-color: var(--green); /* Menggunakan warna hijau tema */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4);
+    z-index: 98; /* Di atas konten, di bawah modal (999) */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    text-decoration: none;
+    animation: pulse-chat 2s infinite;
+}
+
+.floating-chat-btn .chat-icon {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efek Hover */
+.floating-chat-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 200, 83, 0.6);
+}
+
+/* Tooltip kecil saat hover (opsional) */
+.chat-tooltip {
+    position: absolute;
+    right: 65px;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.floating-chat-btn:hover .chat-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Animasi berdenyut agar menarik perhatian */
+@keyframes pulse-chat {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 200, 83, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* Penyesuaian untuk Dark Mode */
+body.dark-mode .floating-chat-btn {
+    background-color: var(--theme-accent); /* Warna emas/kuning */
+    animation: pulse-chat-dark 2s infinite;
+}
+
+body.dark-mode .floating-chat-btn .chat-icon {
+    color: var(--theme-primary); /* Ikon jadi warna gelap */
+}
+
+@keyframes pulse-chat-dark {
+    0% { box-shadow: 0 0 0 0 rgba(249, 227, 120, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(249, 227, 120, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(249, 227, 120, 0); }
+}
+
+/* =========================================
+   TOMBOL KEDUA (EXTRA BUTTON)
+   ========================================= */
+.floating-extra-btn {
+    position: fixed;
+    /* Rumus: 70px (tombol bawah) + 55px (tinggi tombol) + 15px (jarak) = 140px */
+    bottom: 230px; 
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    /* Warna Hijau WhatsApp / Bebas diganti */
+    background-color: #25D366; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 98;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    text-decoration: none;
+    /* Animasi berbeda sedikit agar tidak barengan */
+    animation: pulse-chat 2s infinite 1s; 
+}
+
+.floating-extra-btn .chat-icon {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-extra-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Tooltip untuk tombol kedua */
+.floating-extra-btn .chat-tooltip {
+    position: absolute;
+    right: 65px;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.floating-extra-btn:hover .chat-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Dark Mode untuk Tombol Kedua */
+body.dark-mode .floating-extra-btn {
+    /* Misal warna Putih atau tetap Hijau WA */
+    background-color: #fff; 
+}
+body.dark-mode .floating-extra-btn .chat-icon {
+    color: #25D366; /* Icon jadi hijau */
+}
+
+.floating-stack-container {
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Style Dasar Tombol Floating */
+.floating-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    
+    /* FLEXBOX CENTERING (Penting!) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Reset Padding agar icon tidak terdorong */
+    padding: 0;
+    margin: 0;
+    line-height: 0; /* Hapus spasi baris extra */
+}
+
+/* Wrapper Icon di dalam tombol */
+.chat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Memastikan SVG (Gambar Icon) ukurannya pas dan tidak terpotong */
+.floating-btn svg {
+    width: 28px !important;  /* Ukuran fix */
+    height: 28px !important;
+    display: block;
+    margin: auto;
+    flex-shrink: 0; /* Mencegah icon tergencet */
+}
+
+.floating-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+}
+
+/* Warna Khusus Tombol WhatsApp */
+.chat-btn {
+    background-color: #007bff; /* Warna Biru Cerah */
+    color: #fff;
+    text-decoration: none;
+    animation: pulse-chat 2s infinite 1s;
+}
+
+/* Animasi Pulse (Diupdate ke Biru) */
+@keyframes pulse-chat {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* Warna Khusus Theme Toggle */
+.theme-toggle-btn {
+    background-color: #ffffff;
+    color: #310c0b;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .theme-toggle-btn {
+    background-color: #671a17;
+    color: #f9e378;
+    box-shadow: 0 4px 15px rgba(249, 227, 120, 0.3);
+}
+
+/* Icon visibility logic */
+body.dark-mode .icon-sun { display: none; }
+body.dark-mode .icon-moon { display: block !important; }
+
+@keyframes pulse-chat {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* --- MAIN LOGO STYLE --- */
+.header-top {
+    /* Ensure header uses vertical Flexbox for alignment */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.site-logo {
+    display: block;
+    max-width: 250px; /* Maximum logo width (adjustable) */
+    height: auto;     /* Auto height to prevent distortion */
+    margin: 0 auto 0 auto; /* Centered position */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* Slight shadow for pop-up effect */
+}
+
+/* .seo-title sizing merged into single declaration above (H1 is visually hidden via .sr-only) */
+
+/* --- SEO TECHNIQUE: Hide text visually but readable by Google --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- ACTIVE PROVIDER TAB STYLE (GOLD THEME) --- */
+.tab-btn.active {
+    /* Gold Background (Matches theme accent) */
+    background: #f9e378 !important; 
+    
+    /* Dark Text (Matches theme primary/deep maroon) */
+    color: #310c0b !important;      
+    
+    /* Border matches the gold background */
+    border-color: #f9e378 !important; 
+    
+    /* Soft gold glow effect */
+    box-shadow: 0 0 15px rgba(249, 227, 120, 0.5) !important; 
+    
+    font-weight: 800;
+}
